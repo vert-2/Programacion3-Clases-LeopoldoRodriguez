@@ -1,4 +1,4 @@
-package Trabajo1;
+package Programacion3-Clases-LeopoldoRodriguez;
 public class Main {
     public static void main(String[] args) {
         Mascota mascota1 = new Mascota("elpejo", 10, "perro", 3);
