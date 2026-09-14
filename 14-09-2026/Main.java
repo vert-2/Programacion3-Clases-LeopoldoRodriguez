@@ -1,0 +1,87 @@
+public class Main {
+
+    public static void main(String[] args){
+
+        String[] nombres = {"Juan Perez", "Ana Lopez", "Carlos Ruiz", "Maria Diaz", "Luis Marte"};
+        String [] correos = {"juan@ucne.edu", "ana@gmail.com", "carlos@ucne.edu", "maria@yahoo.com", "luis@ucne.edu"};
+        double [] parcial1 = {8.5, 9.0, 6.3, 4.5, 7.8};
+        double[] parcial2 = {7.0, 8.5, 5.9, 6.0, 9.2};
+        double[] parcial3 = {9.0, 7.5, 4.8, 8.0, 6.5};
+        double[] promedios = new double[nombres.length];
+
+        
+        for (int i = 0; i < nombres.length; i++) {
+            promedios[i] = (parcial1[i] + parcial2[i] + parcial3[i]) / 3;
+        }
+
+        System.out.println(String.format("%-15s %-10s %-10s", "NOMBRE", "PROMEDIO", "ESTADO"));
+        System.out.println("----------------------------------------");
+        for (int i = 0; i < nombres.length; i++) {
+            
+            String estado = (promedios[i] >= 6.0) ? "Aprobado" : "Reprobado";
+            
+            
+            System.out.println(String.format("%-15s %-10.2f %-10s", nombres[i], promedios[i], estado));
+
+        }
+        
+        double promedioGeneral = 0;
+        for (double promedio : promedios) {
+            promedioGeneral += promedio;
+        }
+        promedioGeneral /= promedios.length;
+        System.out.println("----------------------------------------");
+        System.out.println(String.format("PROMEDIO GENERAL: %-10.2f", promedioGeneral));
+
+        int promedioMasAlto = 0;
+        int promedioMasBajo = 0;
+
+        for (int i = 1; i < promedios.length; i++) {
+            if (promedios[i] > promedios[promedioMasAlto]) {
+                promedioMasAlto = i; 
+            }
+            if (promedios[i] < promedios[promedioMasBajo]) {
+                promedioMasBajo = i; 
+            }
+        }
+
+        
+        System.out.println(String.format("PROMEDIO MAS ALTO: %s con %.2f", nombres[promedioMasAlto], promedios[promedioMasAlto]));
+        System.out.println(String.format("PROMEDIO MAS BAJO: %s con %.2f", nombres[promedioMasBajo], promedios[promedioMasBajo]));
+
+        System.out.println("----------------------------------------");
+        System.out.print("Estudiantes con correo institucional: ");
+
+        for (int i = 0; i < correos.length; i++) {
+    
+            if (correos[i].endsWith("@ucne.edu")) {
+        
+        String nombreMayuscula = nombres[i].toUpperCase();
+        
+        
+        System.out.print("- " + nombreMayuscula + " " + correos[i] + " ");
+            }
+        }
+        System.out.println();
+        System.out.println("----------------------------------------");
+        System.out.println("Buscador de estudiantes:");
+        BuscarEstudiante(nombres, "lopez");
+    }
+
+    public static void BuscarEstudiante(String [] nombres, String nombreBuscado) {
+        boolean encontrado = false;
+        for (int i = 0; i < nombres.length; i++) {
+            if (nombres[i].equalsIgnoreCase(nombreBuscado)) {
+                System.out.println("Indice del estudiante: " + i);
+                encontrado = true;
+                break;
+            }
+        }
+        if (!encontrado) {
+            System.out.println("-1");
+        }
+    }
+
+}
+
+
