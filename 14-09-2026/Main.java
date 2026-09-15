@@ -64,22 +64,40 @@ public class Main {
         }
         System.out.println();
         System.out.println("----------------------------------------");
-        System.out.println("Buscador de estudiantes:");
-        BuscarEstudiante(nombres, "lopez");
+        System.out.println("BUSCADOR DE ESTUDIANTES");
+        int indice = buscarEstudiante(nombres, "lopez");
+
+        if (indice != -1) {
+
+            String estado = (promedios[indice] >= 6.0)
+                    ? "Aprobado"
+                    : "Reprobado";
+
+            System.out.println("Estudiante encontrado:");
+            System.out.println("Indice:     " + indice);
+            System.out.println("Nombre:     " + nombres[indice]);
+            System.out.println("Correo:     " + correos[indice]);
+            System.out.println("Parcial 1:  " + parcial1[indice]);
+            System.out.println("Parcial 2:  " + parcial2[indice]);
+            System.out.println("Parcial 3:  " + parcial3[indice]);
+            System.out.printf("Promedio:   %.2f%n", promedios[indice]);
+            System.out.println("Estado:     " + estado);
+
+        } else {
+            System.out.println("Estudiante no encontrado.");
+        }
     }
 
-    public static void BuscarEstudiante(String [] nombres, String nombreBuscado) {
-        boolean encontrado = false;
+    public static int buscarEstudiante(String[] nombres, String nombreBuscar) {
+
         for (int i = 0; i < nombres.length; i++) {
-            if (nombres[i].equalsIgnoreCase(nombreBuscado)) {
-                System.out.println("Indice del estudiante: " + i);
-                encontrado = true;
-                break;
+
+            if (nombres[i].toLowerCase().contains(nombreBuscar.toLowerCase())) {
+                return i;
             }
         }
-        if (!encontrado) {
-            System.out.println("-1");
-        }
+
+        return -1;
     }
 
 }
