@@ -17,7 +17,7 @@ public class CuentaBancaria {
     public void setSaldoActual(double saldoActual) {
         this.saldoActual = saldoActual;
     }
-    
+
     public String getNombreTitular() {
         return nombreTitular;
     }
@@ -34,10 +34,9 @@ public class CuentaBancaria {
                 throw new DepositoInvalidoException("Manito aqui no cogemo esa monto vacio");
             } else {
                 saldoActual += monto;
-                System.out.println("Monto actual de " + nombre + ": " + getSaldoActual());
             }
         }catch (DepositoInvalidoException e){
-            System.out.println("Error general: " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
 
     }

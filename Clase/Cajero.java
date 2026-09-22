@@ -21,7 +21,11 @@ public class Cajero implements Runnable {
         
         
         try {
-            
+            cuentaAna.depositar("Ana", 1500.00);
+            cuentaLuis.depositar("Luis", -200.00);
+            cuentaMaria.depositar("Carlos", 800.00);
+            cuentaJose.depositar("", 500.00);
+            cuentaMaria.depositar("Maria", 3000.00);           
             
         } catch (DepositoInvalidoException e) {
             System.out.println("Error de depósito: " + e.getMessage());
